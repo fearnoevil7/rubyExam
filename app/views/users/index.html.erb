@@ -1,0 +1,74 @@
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Title</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            h1{
+                margin: 0px 0px 160px 0px;
+            }
+            div{
+                display: inline-block;
+                vertical-align: top;
+            }
+            input{
+                display: block;
+            }
+            .register{
+                margin: 0px 0px 0px 223px;
+                border: 3px solid black;
+                height: 430px;
+                width: 340px;
+                padding: 34px 0px 0px 61px;
+            }
+            .login{
+                margin: 0px 0px 0px 142px;
+                border: 3px solid black;
+                height: 250px;
+                width: 340px;
+                padding: 16px 0px 0px 61px;
+            }
+        </style>
+    </head>
+    <body>
+        <% if flash[:notice] %>
+        <% flash[:notice].each do |note| %>
+            <p id="notice"><%= note %></p>
+        <% end %>
+        <% end %>
+        <h1>Welcome!!!!!!!</h1>
+        <div class="register">
+            <h3>Register</h3>
+            <form action="/users" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <span>First Name: </span><input type="text" name="user[first_name]">
+                <span>Last Name: </span><input type="text" name="user[last_name]">
+                <span>Email: </span><input type="text" name="user[email]">
+                <span>Password: </span><input type="text" name="user[password]">
+                <span>Confirm: </span><input type="text" name="user[password_confirmation]">
+                <button type="submit" class="btn btn-success">Register</button>
+            </form>
+        </div>
+
+        <div class="login">
+            <h3>Login</h3>
+            <form action="/sessions" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <span>Email: </span><input type="text" name="user[email]">
+                <span>Password: </span><input type="text" name="user[password]">
+                <button type="submit" class="btn btn-info">Login</button>
+            </form>
+        </div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </body>
+</html>
